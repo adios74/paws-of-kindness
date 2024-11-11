@@ -5,11 +5,31 @@ from telegram.ext import (
 )
 
 
+async def send_inline_keyboard(message) -> None:
+    keyboard = [
+        [
+            InlineKeyboardButton("ПАМАГИТИ", callback_data="help"),
+            InlineKeyboardButton("Что-то ещё", callback_data="2"),
+        ],
+        [InlineKeyboardButton("Выбрать жвотне", callback_data="choose_animal")],
+    ]
+
+    reply_markup = InlineKeyboardMarkup(keyboard)
+
+    await message.reply_text("Выберите действие:", reply_markup=reply_markup)
+
+
 async def reply(query) -> None:
     if query.data == "help":
         await query.edit_message_text(text="Бог в помощь")
     elif query.data == "choose_animal":
         await query.edit_message_text(text="Меню выбора, например")
+    else:
+        return
+
+    message = query.message
+
+    await send_inline_keyboard(message)
 
 
 async def button(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
@@ -25,14 +45,6 @@ async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> No
 
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-    keyboard = [
-        [
-            InlineKeyboardButton("ПАМАГИТИ", callback_data="help"),
-            InlineKeyboardButton("Что-то ещё", callback_data="2"),
-        ],
-        [InlineKeyboardButton("Выбрать жвотне", callback_data="choose_animal")],
-    ]
+    message = update.message
 
-    reply_markup = InlineKeyboardMarkup(keyboard)
-
-    await update.message.reply_text("Выберите действие:", reply_markup=reply_markup)
+    await send_inline_keyboard(message)

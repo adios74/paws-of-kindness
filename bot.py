@@ -1,4 +1,4 @@
-#основной файл запуска, укажи свой token в init.py
+# основной файл запуска, укажи свой token в init.py
 import init
 import logging
 from telegram import Update

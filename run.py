@@ -2,11 +2,12 @@ import telebot
 import webbrowser
 from telebot import types
 import get_data
-import information
-import donation_info
+import pets_data.information as information
+import pets_data.donation_info as donation_info
+from init import bot_token
 # from get_data import get_pet, get_name
 
-bot = telebot.TeleBot('7063861683:AAEj42JKRsa2Qst1aigI9VyK4wX3EfzFfG8')
+bot = telebot.TeleBot(bot_token)
 
 
 @bot.message_handler(command=['site', 'website'])

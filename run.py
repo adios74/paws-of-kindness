@@ -5,6 +5,7 @@ import get_data
 import pets_data.information as information
 import donation_info
 from init import bot_token
+import time
 # from get_data import get_pet, get_name
 
 bot = telebot.TeleBot(bot_token)

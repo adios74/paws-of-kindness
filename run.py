@@ -184,4 +184,12 @@ def info(message):
 i = 0
 get_pet = ''
 get_name = ''
-bot.polling(non_stop=True)
+# bot.polling(non_stop=True)
+if __name__=='__main__':
+    while True:
+        try:
+            bot.polling(non_stop=True, interval=0)
+        except Exception as e:
+            print(e)
+            time.sleep(5)
+            continue

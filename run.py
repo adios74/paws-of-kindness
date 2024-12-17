@@ -1,7 +1,7 @@
 import telebot
 from telebot import types
 import get_data
-import pets_data.information
+import pets_data.information as information
 import donation_info
 import time
 bot = telebot.TeleBot('7063861683:AAEj42JKRsa2Qst1aigI9VyK4wX3EfzFfG8')
